@@ -27,16 +27,16 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
         }
 
         /// <summary>
-        /// Checks if subategories have other subcategories.
+        /// Checks if a root category has a parent category.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns>Errors if a subcategory has other subcategories.</returns>
-        internal static IEnumerable<string> ValidateSubCategories(this Category category, object value)
+        /// <returns>Errors if a root has another parent.</returns>
+        internal static IEnumerable<string> ValidateParentCategory(this Category category, object value)
         {
-            if ((value != null) && (category.IsMainCategory == false))
+            if ((value != null) && (category.IsMainCategory == true))
             {
                 Collection<string> errors = new Collection<string>();
-                errors.Add("\"Sub Categories\" can not have other sub categories.");
+                errors.Add("\"Main Categories\" can not have parent categories.");
                 return errors;
             }
             else

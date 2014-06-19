@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EFDataAccessLayer.Entities
 {
-     /// <summary>
+    /// <summary>
     /// Representes a category for transactions account in the application. Inherits from <see cref="EntityBase"/>.
     /// </summary>
     public class Category : EntityBase
@@ -15,7 +15,7 @@ namespace EFDataAccessLayer.Entities
 
         private string _Name;
         private bool _IsMainCategory;
-        private List<Category> _SubCategories;
+        private Category _ParentCategory;
         private string _Comment;
 
         #endregion
@@ -50,14 +50,16 @@ namespace EFDataAccessLayer.Entities
         }
 
         /// <summary>
-        /// Sub categories if this is a min category.
+        /// Parent category if this is a sub category.
         /// <para>Required.</para>
         /// </summary>
-        public List<Category> SubCategories
+        public virtual Category ParentCategory
         {
-            get { return _SubCategories; }
-            set { SetProperty<List<Category>>("SubCategories", ref _SubCategories, value); }
+            get { return _ParentCategory; }
+            set { SetProperty<Category>("ParentCategory", ref _ParentCategory, value); }
         }
+
+        public virtual ICollection<Category> SubCategories { get; set; }
 
         /// <summary>
         /// Notes about the account.
@@ -92,7 +94,7 @@ namespace EFDataAccessLayer.Entities
         {
             AddValidationMethod("Name", this.ValidateName);
             AddValidationMethod("IsMainCategory", this.ValidateIsMainCategory);
-            AddValidationMethod("SubCategories", this.ValidateSubCategories);
+            AddValidationMethod("ParentCategory", this.ValidateParentCategory);
             AddValidationMethod("Comment", this.ValidateComment);
         }
 
@@ -100,7 +102,7 @@ namespace EFDataAccessLayer.Entities
         {
             Name = null;
             IsMainCategory = true;
-            SubCategories = null;
+            ParentCategory = null;
             Comment = null;
         }
 

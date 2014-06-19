@@ -12,7 +12,7 @@ namespace EFDataAccessLayer.Entities
 
         private string _Name;
         private Address _Address;
-        private List<PhoneNumber> _PhoneNumbers;
+        private ICollection<PhoneNumber> _PhoneNumbers;
         private string _Email;
         private string _Website;
         private string _Memo;
@@ -25,12 +25,12 @@ namespace EFDataAccessLayer.Entities
         /// <summary>
         /// Primary Key.
         /// </summary>
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Address of the payee as a complex type.
         /// <para>Required.</para>
-        /// <para>Max Length: Settings.Default.ShortStringLength</para>
+        /// <para>Max Length: Settings.Default.MediumStringLength</para>
         /// </summary>
         public string Name { get { return _Name; } set { SetProperty<string>("Name", ref _Name, value); } }
 
@@ -44,10 +44,10 @@ namespace EFDataAccessLayer.Entities
         /// Holds a collection of phone numbers.
         /// <para>Not Required.</para>
         /// </summary>
-        public IEnumerable<PhoneNumber> PhoneNumbers
+        public ICollection<PhoneNumber> PhoneNumbers
         {
             get { return _PhoneNumbers; }
-            set { SetProperty<List<PhoneNumber>>("PhoneNumbers", ref _PhoneNumbers, value.ToList()); }
+            set { SetProperty<ICollection<PhoneNumber>>("PhoneNumbers", ref _PhoneNumbers, value); }
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EFDataAccessLayer.Entities
         /// <para>Max Length: Settings.Default.LongStringLength</para>
         /// </summary>
         public string Memo { get { return _Memo; } set { SetProperty<string>("Memo", ref _Memo, value); } }
-       
+
         #endregion
 
         //_________________________________________________________________________________________
@@ -87,8 +87,10 @@ namespace EFDataAccessLayer.Entities
         protected override void RegisterValidationMethods()
         {
             AddValidationMethod("Name", this.ValidateName);
-            //Address
-            //Phone Numbers
+            //Add a dummy validation method which returns null all the time since it has own validation
+            AddValidationMethod("Address", (o) => { return null; });
+            //Same thing for Phone Numbers
+            AddValidationMethod("PhoneNumbers", (o) => { return null; });
             AddValidationMethod("Email", this.ValidateEmail);
             AddValidationMethod("Website", this.ValidateWebsite);
             AddValidationMethod("Memo", this.ValidateMemo);
@@ -104,6 +106,6 @@ namespace EFDataAccessLayer.Entities
             Memo = null;
         }
 
-        #endregion        
+        #endregion
     }
 }

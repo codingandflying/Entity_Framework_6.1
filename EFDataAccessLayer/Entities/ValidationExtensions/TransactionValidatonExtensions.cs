@@ -7,6 +7,14 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
     /// </summary>
     internal static class TransactionValidatonExtensions
     {
+        internal static IEnumerable<string> ValidateNotNull(this Transaction transaction, object value)
+        {
+            if (value != null)
+                return null;
+            else
+                return new List<string>() { "This field can not be null" };
+        }
+
         internal static IEnumerable<string> ValidateDate(this Transaction transaction, object value)
         {
             return null;

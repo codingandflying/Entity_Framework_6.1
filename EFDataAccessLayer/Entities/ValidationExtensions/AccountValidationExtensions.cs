@@ -19,7 +19,7 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
         /// <returns>An enumerable containing errors, or null if no errors.</returns>
         internal static IEnumerable<string> ValidateName(this Account account, object value)
         {
-            return (CommonValidation.ValidateString("Account Name", value, Settings.Default.ShortStringLength, 1, true));
+            return (CommonValidation.ValidateString("Account Name", value, Settings.Default.LongStringLength, 1, true));
         }
 
         /// <summary>

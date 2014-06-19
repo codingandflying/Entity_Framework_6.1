@@ -15,7 +15,7 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
         /// <returns>An IEnumerable for errors.</returns>
         internal static IEnumerable<string> ValidateName(this Payee payee, object value)
         {
-            return CommonValidation.ValidateString("Payee Name", value, Settings.Default.ShortStringLength, 1, true);
+            return CommonValidation.ValidateString("Payee Name", value, Settings.Default.MediumStringLength, 1, true);
         }
         
         /// <summary>

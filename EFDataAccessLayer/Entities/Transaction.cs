@@ -1,4 +1,5 @@
 ﻿using EFDataAccessLayer.BaseTypes;
+using EFDataAccessLayer.Entities.ValidationExtensions;
 using System;
 
 namespace EFDataAccessLayer.Entities
@@ -48,7 +49,6 @@ namespace EFDataAccessLayer.Entities
         /// </summary>
         public Payee OtherParty { get { return _OtherParty; } set { SetProperty<Payee>("OtherParty", ref _OtherParty, value); } }
 
-
         /// <summary>
         /// Amount of the transction.
         /// <para>Required.</para>
@@ -66,7 +66,6 @@ namespace EFDataAccessLayer.Entities
         /// <para>Required.</para>
         /// </summary>
         public Category Category { get { return _Category; } set { SetProperty<Category>("Category", ref _Category, value); } }
-        #endregion
 
         /// <summary>
         /// Comments about the transaction.
@@ -85,6 +84,8 @@ namespace EFDataAccessLayer.Entities
             set { SetProperty<Account>("ReceivingAccount", ref _ReceivingAccount, value); }
         }
 
+        #endregion
+
         //_________________________________________________________________________________________
         #region Constructors
 
@@ -101,7 +102,15 @@ namespace EFDataAccessLayer.Entities
 
         protected override void RegisterValidationMethods()
         {
-            throw new NotImplementedException();
+            AddValidationMethod("Date", this.ValidateDate);
+            AddValidationMethod("Account", this.ValidateNotNull);
+            AddValidationMethod("OtherParty", this.ValidateNotNull);
+            AddValidationMethod("Amount", this.ValidateAmount);
+            AddValidationMethod("IsTransfer", this.ValidateIsTransfer);
+            AddValidationMethod("Category", this.ValidateNotNull);
+            AddValidationMethod("Notes", this.ValidateNotes);
+            AddValidationMethod("ReceivingAccount", this.ValidateNotNull);
+
         }
 
         protected override void ResetProperties()

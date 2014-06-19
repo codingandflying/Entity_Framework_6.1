@@ -1,5 +1,6 @@
 ﻿using EFDataAccessLayer.BaseTypes;
 using EFDataAccessLayer.Entities.ValidationExtensions;
+using System.Collections.Generic;
 
 namespace EFDataAccessLayer.Entities
 {
@@ -15,7 +16,7 @@ namespace EFDataAccessLayer.Entities
         /// <summary>
         /// Primary Key.
         /// </summary>
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// User friendly name for the account type.
@@ -29,6 +30,8 @@ namespace EFDataAccessLayer.Entities
         /// <para>Required.</para>
         /// </summary>
         public bool CanBeNegative { get; set; }
+
+        public virtual ICollection<Account> Accounts { get; set; }
 
         #endregion
 

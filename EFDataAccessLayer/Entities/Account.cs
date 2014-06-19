@@ -34,12 +34,12 @@ namespace EFDataAccessLayer.Entities
         /// <summary>
         /// Primary Key.
         /// </summary>
-        public int ID { get; private set; }
-        
+        public int ID { get; set; }
+
         /// <summary>
         /// Account Name.
         /// <para>Required.</para>
-        /// <para>Max Length: Settings.Default.ShortStringLength</para>
+        /// <para>Max Length: Settings.Default.MediumStringLength</para>
         /// </summary>
         public string Name
         {
@@ -73,7 +73,7 @@ namespace EFDataAccessLayer.Entities
         /// Account Type.
         /// <para>Required.</para>
         /// </summary>
-        public AccountType AccountType
+        public virtual AccountType AccountType
         {
             get { return _AccountType; }
             set { SetProperty<AccountType>("AccountType", ref _AccountType, value); }
@@ -182,7 +182,7 @@ namespace EFDataAccessLayer.Entities
         public Account()
         {
             RegisterValidationMethods();
-            
+
             ResetProperties();
 
         }
