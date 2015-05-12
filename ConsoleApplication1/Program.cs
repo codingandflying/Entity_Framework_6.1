@@ -39,6 +39,11 @@ namespace ConsoleApplication1
                 Console.ReadKey();
             }
 
+            var accountsCount = unitOfWork.AccountRepo.Count();
+            
+            Console.WriteLine("Account's Count is [{0}].",accountsCount);
+            Console.ReadKey();
+
             //Save the changes
             unitOfWork.Commit();
             //Return the uow to be disposed
