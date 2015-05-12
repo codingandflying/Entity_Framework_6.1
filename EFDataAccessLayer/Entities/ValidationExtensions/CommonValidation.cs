@@ -50,6 +50,7 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
             return errors;
         }
 
+        /// <summary>
         /// Called internally to validate an email string.
         /// </summary>
         /// <param name="friendlyName">User friendly name of the property.</param>
