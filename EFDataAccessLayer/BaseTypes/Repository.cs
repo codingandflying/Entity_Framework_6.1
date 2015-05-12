@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace EFDataAccessLayer.BaseTypes
 {
     /// <summary>
-    /// Implements the generic <see cref="IRepository"/> interface.
+    ///     Implements the generic <see cref="IRepository" /> interface.
     /// </summary>
-    /// <typeparam name="T">A class derived from <see cref="EntityBase" class./></typeparam>
+    /// <typeparam name="T">A class derived from <see cref="EntityBase" class. /></typeparam>
     public class Repository<T> : IRepository<T> where T : EntityBase
     {
         /// <summary>
-        /// Underlying DbSet.
-        /// </summary>
-        protected DbSet<T> _DbSet;
-
-        /// <summary>
-        /// Underlying dbcontext
+        ///     Underlying dbcontext
         /// </summary>
         protected DbContext _DbContext;
 
         /// <summary>
-        /// Injects the DbContext holding DbSet.
+        ///     Underlying DbSet.
+        /// </summary>
+        protected DbSet<T> _DbSet;
+
+        /// <summary>
+        ///     Injects the DbContext holding DbSet.
         /// </summary>
         /// <param name="dataContext"></param>
         public Repository(DbContext dataContext)
@@ -31,11 +32,10 @@ namespace EFDataAccessLayer.BaseTypes
             _DbSet = _DbContext.Set<T>();
         }
 
-        //_________________________________________________________________________________________
         #region IRepository<T> Members
 
         /// <summary>
-        /// Inserts a single entity into the DbSet
+        ///     Inserts a single entity into the DbSet
         /// </summary>
         /// <param name="entity"></param>
         public void Insert(T entity)
@@ -44,7 +44,7 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         /// <summary>
-        /// Returns an entity based on primary key.
+        ///     Returns an entity based on primary key.
         /// </summary>
         /// <param name="id">Primary Key.</param>
         /// <returns></returns>
@@ -54,13 +54,14 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         /// <summary>
-        /// Returns an IEnumerable based on the query, order clause and the properties included
+        ///     Returns an IEnumerable based on the query, order clause and the properties included
         /// </summary>
         /// <param name="query">Link query for filtering.</param>
         /// <param name="orderBy">Link query for sorting.</param>
         /// <param name="includeProperties">Navigation properties seperated by comma for eager loading.</param>
         /// <returns>IEnumerable containing the resulting entity set.</returns>
-        public System.Collections.Generic.IEnumerable<T> GetByQuery(Expression<Func<T, bool>> query = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "")
+        public IEnumerable<T> GetByQuery(Expression<Func<T, bool>> query = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "")
         {
             IQueryable<T> queryResult = _DbSet;
 
@@ -71,7 +72,7 @@ namespace EFDataAccessLayer.BaseTypes
             }
 
             //get the include requests for the navigation properties and add them to the query result
-            foreach (var property in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string property in includeProperties.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries))
             {
                 queryResult = queryResult.Include(property);
             }
@@ -81,15 +82,12 @@ namespace EFDataAccessLayer.BaseTypes
             {
                 return orderBy(queryResult).ToList();
             }
-            //if not, return the results as is
-            else
-            {
-                return queryResult.ToList();
-            }
+                //if not, return the results as is
+            return queryResult.ToList();
         }
 
         /// <summary>
-        /// Returns the first matching entity based on the query.
+        ///     Returns the first matching entity based on the query.
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
@@ -99,7 +97,7 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         /// <summary>
-        /// Updates an entity.
+        ///     Updates an entity.
         /// </summary>
         /// <param name="entity"></param>
         public void Update(T entity)
@@ -109,7 +107,7 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         /// <summary>
-        /// Updates an entity by primary key.
+        ///     Updates an entity by primary key.
         /// </summary>
         /// <param name="id">Primary Key.</param>
         public void UpdateById(int id)
@@ -117,11 +115,10 @@ namespace EFDataAccessLayer.BaseTypes
             T entity = _DbSet.Find(id);
             _DbSet.Attach(entity);
             _DbContext.Entry(entity).State = EntityState.Modified;
-
         }
 
         /// <summary>
-        /// Deletes an entity.
+        ///     Deletes an entity.
         /// </summary>
         /// <param name="entity"></param>
         public void Delete(T entity)
@@ -133,7 +130,7 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         /// <summary>
-        /// Deletes an entity by primary key.
+        ///     Deletes an entity by primary key.
         /// </summary>
         /// <param name="id">Primary Key.</param>
         public void DeleteByID(int id)
@@ -143,5 +140,16 @@ namespace EFDataAccessLayer.BaseTypes
         }
 
         #endregion
+
+        //_________________________________________________________________________________________
+
+        public long Count(Expression<Func<T, bool>> query = null)
+        {
+            if (query != null)
+            {
+                return _DbSet.LongCount(query);
+            }
+            return _DbSet.LongCount();
+        }
     }
 }

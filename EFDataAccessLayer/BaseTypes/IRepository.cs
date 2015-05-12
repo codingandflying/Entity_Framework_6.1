@@ -65,5 +65,12 @@ namespace EFDataAccessLayer.BaseTypes
         /// </summary>
         /// <param name="id">Primary Key.</param>
         void DeleteByID(int id);
+
+        /// <summary>
+        /// Count the entities without load data
+        /// </summary>
+        /// <param name="query">Link query for filtering.</param>
+        /// <returns>the count (type is long)</returns>
+        long Count(Expression<Func<T, bool>> query = null);
     }
 }
