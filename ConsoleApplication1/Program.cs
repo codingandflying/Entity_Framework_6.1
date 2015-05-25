@@ -41,12 +41,27 @@ namespace ConsoleApplication1
 
             var accountsCount = unitOfWork.AccountRepo.Count();
             
+            
             Console.WriteLine("Account's Count is [{0}].",accountsCount);
             Console.ReadKey();
 
             //Save the changes
             unitOfWork.Commit();
             //Return the uow to be disposed
+            facade.ReturnUnitOfWork();
+
+            //Get another uow
+            unitOfWork = facade.GetUnitOfWork();
+
+            Console.WriteLine("Delete Account Type whose id is 3.");
+            unitOfWork.AccountTypeRepo.DeleteByID(3);
+            unitOfWork.Commit();
+
+            accountsCount = unitOfWork.AccountRepo.Count();
+            
+            Console.WriteLine("Account's Count is [{0}].", accountsCount);
+            Console.ReadKey();
+           
             facade.ReturnUnitOfWork();
 
             //Get another uow

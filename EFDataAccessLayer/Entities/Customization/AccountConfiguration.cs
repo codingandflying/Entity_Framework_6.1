@@ -14,8 +14,8 @@ namespace EFDataAccessLayer.Entities.Configuration
             Property(a => a.Bank).IsOptional().HasMaxLength(Settings.Default.MediumStringLength);
             Property(a => a.AccountNo).IsOptional().HasMaxLength(Settings.Default.ShortStringLength);
 
-            //HasRequired(a => a.AccountType);
-
+            HasRequired(a => a.AccountType);
+            
             Property(a => a.IsActive).IsRequired();
             Property(a => a.Currency).IsRequired().HasMaxLength(Settings.Default.ShortStringLength);
             Property(a => a.CurrencySymbol).IsRequired().IsFixedLength().HasMaxLength(3);
