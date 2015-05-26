@@ -43,7 +43,7 @@ namespace EFDataAccessLayer.Entities.ValidationExtensions
         /// </summary>
         /// <param name="payee"></param>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>An IEnumerable for errors.</returns>
         internal static IEnumerable<string> ValidateWebsite(this Payee payee, object value)
         {
             return CommonValidation.ValidateUrl("Website", value, Settings.Default.MediumStringLength);
