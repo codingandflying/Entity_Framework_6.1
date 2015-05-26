@@ -23,6 +23,17 @@ namespace ComplexType
                             select u;
                 query.ToList();
 
+                //user state manage.
+                user = context.Users.Find(1);
+
+                Address originalValues = context.Entry(user)
+                                                .ComplexProperty(u => u.Address)
+                                                .OriginalValue;
+
+                Address currentValues = context.Entry(user)
+                                               .ComplexProperty(u => u.Address)
+                                               .CurrentValue;
+
                 Console.Read();
             }
         }

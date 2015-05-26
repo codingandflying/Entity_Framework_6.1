@@ -1,5 +1,8 @@
-﻿namespace ComplexType.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ComplexType.Entities
 {
+    [ComplexType]
     public class Address
     {
         public string Street { get; set; }
