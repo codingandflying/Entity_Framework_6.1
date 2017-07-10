@@ -22,7 +22,6 @@ namespace TableSplit
             modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<EmployeePhoto>().ToTable("Employees");
 
-
         }
     }
 }

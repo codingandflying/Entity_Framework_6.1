@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDataAccessLayer", "EFDataAccessLayer\EFDataAccessLayer.csproj", "{5343DE41-AC4D-4338-8A12-560645044C9D}"
 EndProject
@@ -26,6 +26,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TableSplitting", "TableSplitting", "{98FF4C5E-8BFF-4BD6-A613-E4814F0999F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableSplit", "TableSplit\TableSplit.csproj", "{21F20E28-919E-4167-8382-155757685719}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9A6F3745-F109-44A5-B351-C9313A741BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.Tutorial.EntityFramework.xUnitTest", "Tests\HQF.Tutorial.EntityFramework.xUnitTest\HQF.Tutorial.EntityFramework.xUnitTest.csproj", "{B3A34676-302E-49A7-97BB-1F6728245CD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{511284B3-2530-4A14-ABE6-E8A9C07875D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.Tutorial.EntityFramework.Commons", "Src\HQF.Tutorial.EntityFramework.Commons\HQF.Tutorial.EntityFramework.Commons.csproj", "{5F7106CA-7217-49D2-8236-733E13A9137D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +77,14 @@ Global
 		{21F20E28-919E-4167-8382-155757685719}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21F20E28-919E-4167-8382-155757685719}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21F20E28-919E-4167-8382-155757685719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A34676-302E-49A7-97BB-1F6728245CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A34676-302E-49A7-97BB-1F6728245CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A34676-302E-49A7-97BB-1F6728245CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A34676-302E-49A7-97BB-1F6728245CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7106CA-7217-49D2-8236-733E13A9137D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7106CA-7217-49D2-8236-733E13A9137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7106CA-7217-49D2-8236-733E13A9137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7106CA-7217-49D2-8236-733E13A9137D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,5 +97,7 @@ Global
 		{DE0E7186-A6E0-481C-A5BF-6F6F0B4CD166} = {0CDA5624-5079-432F-9F51-425E92FF9C5E}
 		{5BCD32A9-9C97-4875-89A3-D46407D07187} = {0CBA0C59-3045-4D81-8F56-0FCD88F41C9C}
 		{21F20E28-919E-4167-8382-155757685719} = {98FF4C5E-8BFF-4BD6-A613-E4814F0999F8}
+		{B3A34676-302E-49A7-97BB-1F6728245CD8} = {9A6F3745-F109-44A5-B351-C9313A741BA1}
+		{5F7106CA-7217-49D2-8236-733E13A9137D} = {511284B3-2530-4A14-ABE6-E8A9C07875D3}
 	EndGlobalSection
 EndGlobal
