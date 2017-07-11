@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using Entities;
+using HQF.Tutorial.EntityFramework.Commons.Entities;
 
-namespace HQF.Tutorial.EntityFramework.Commons
+namespace HQF.Tutorial.EntityFramework.Commons.DbContexts
 {
     public class SimpleDbContextInitializer : CreateDatabaseIfNotExists<SimpleDbContext>
     {

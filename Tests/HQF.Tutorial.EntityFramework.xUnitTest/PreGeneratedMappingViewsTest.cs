@@ -1,4 +1,5 @@
 ﻿using HQF.Tutorial.EntityFramework.Commons;
+using HQF.Tutorial.EntityFramework.Commons.DbContexts;
 using Xunit;
 using Xunit.Abstractions;
 
