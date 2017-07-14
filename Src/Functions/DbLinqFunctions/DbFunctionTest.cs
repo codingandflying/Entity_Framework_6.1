@@ -5,9 +5,9 @@ using Xunit.Abstractions;
 
 namespace DbLinqFunctions
 {
-    public class FunctionTest
+    public class DbFunctionTest
     {
-        public FunctionTest(ITestOutputHelper outputHelper)
+        public DbFunctionTest(ITestOutputHelper outputHelper)
         {
             _outputHelper = outputHelper;
         }

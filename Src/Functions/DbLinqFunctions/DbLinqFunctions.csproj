@@ -65,7 +65,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FunctionTest.cs" />
+    <Compile Include="CustomQueryTest.cs" />
+    <Compile Include="DbFunctionTest.cs" />
     <Compile Include="TreeNodeDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
