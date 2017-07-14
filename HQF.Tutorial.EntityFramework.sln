@@ -37,6 +37,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDataAccessLayer", "Src\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDataAccessLayer.Console", "Src\Apps\SimpleDemo\EFDataAccessLayer.Console\EFDataAccessLayer.Console.csproj", "{A3B6140A-D6E3-40ED-8199-ED91F3191667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Nano.Web", "Src\Apps\EF.Nano.Web\EF.Nano.Web.csproj", "{F5E3A736-975A-4E3C-82C1-98E164468860}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{B1533006-1D41-450B-B12E-5221A12580E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F0C5C4C0-3994-4BE4-B4AA-685FDAAFD4DA}"
+	ProjectSection(SolutionItems) = preProject
+		Src\Docs\EF_Linq.md = Src\Docs\EF_Linq.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbLinqFunctions", "Src\Functions\DbLinqFunctions\DbLinqFunctions.csproj", "{FBB3D189-DBBD-4DEC-A129-9F6685E752EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +94,14 @@ Global
 		{A3B6140A-D6E3-40ED-8199-ED91F3191667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3B6140A-D6E3-40ED-8199-ED91F3191667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3B6140A-D6E3-40ED-8199-ED91F3191667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E3A736-975A-4E3C-82C1-98E164468860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E3A736-975A-4E3C-82C1-98E164468860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E3A736-975A-4E3C-82C1-98E164468860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E3A736-975A-4E3C-82C1-98E164468860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB3D189-DBBD-4DEC-A129-9F6685E752EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB3D189-DBBD-4DEC-A129-9F6685E752EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB3D189-DBBD-4DEC-A129-9F6685E752EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB3D189-DBBD-4DEC-A129-9F6685E752EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +118,7 @@ Global
 		{9B8253EB-FDA7-4C3B-97C8-C8F4D3387E9D} = {4B493A43-670A-4F2D-ADF7-05A74B25F904}
 		{5343DE41-AC4D-4338-8A12-560645044C9D} = {9B8253EB-FDA7-4C3B-97C8-C8F4D3387E9D}
 		{A3B6140A-D6E3-40ED-8199-ED91F3191667} = {9B8253EB-FDA7-4C3B-97C8-C8F4D3387E9D}
+		{F5E3A736-975A-4E3C-82C1-98E164468860} = {4B493A43-670A-4F2D-ADF7-05A74B25F904}
+		{FBB3D189-DBBD-4DEC-A129-9F6685E752EB} = {B1533006-1D41-450B-B12E-5221A12580E2}
 	EndGlobalSection
 EndGlobal
